@@ -19,13 +19,13 @@
             <div class="current-focus" class="rhino-image">
                 <img src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam">
             </div>
-            <div class="forest-image" onclick="yo()">
+            <div class="forest-image">
                 <img src="static/forest.jpeg" alt="On the way to Duchess Falls, Pachmarhi">
             </div>
             <div class="airport-image">
                 <img src="static/birb.jpeg" alt="Painted Stork, Keoladeo National Park, Bharatpur">
             </div>
-            <div class="haneri-image">
+            <div class="kanheri-image">
                 <img src="static/kanheri.jpeg" alt="Kanheri Caves, Mumbai">
             </div>
         </div>
@@ -70,10 +70,32 @@
 <script>
     console.log("hello world!");
 
-    function yo() {
-        console.log(this);
-        console.log("yo!")
+    var thumbsDiv = document.querySelector('.thumbs');
+    console.log(thumbsDiv);
+
+    var thumbImages = thumbsDiv.children;
+    console.log(thumbImages);
+    for (var i = 0; i < thumbImages.length; i++) {
+        var thumbImageDiv = thumbImages.item(i);
+        console.log('thumb image', thumbImageDiv);
+
+        thumbImageDiv.onclick = function () {
+            thumbImage = event.target;
+            
+            var focusDiv = document.querySelector('.current-focus');
+            var focusImage = focusDiv.children.item(0);
+
+            focusImage.setAttribute('src', thumbImage.getAttribute('src'));
+            focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
+
+            focusDiv.classList.forEach((x, i) => {
+                if (x === "current-focus") return;
+                focusDiv.classList.remove(x);
+            })
+
+        }
     }
+
 </script>
 
 </html>
