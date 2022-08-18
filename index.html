@@ -9,22 +9,32 @@
     <br>
     <h1>Pranav Anurag</h1>
     <div class="buffer-header-phga"></div>
-    <div class="photo-gallery">
-        <div class="current-focus" class="rhino-image ">
+    <div class="gallery">
+        <div class="current-focus" class="rhino-image">
             <img src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam" width="600"
                 height="400">
         </div>
         <p></p>
-    </div>
-    <div class="thumbs">
-        <div class="forest-image">
-            <img src="static/forest.jpeg" alt="On the way to Duchess Falls, Pachmarhi" width="600" height="400">
+        <div class="thumbs">
+            <div class="current-focus" class="rhino-image">
+                <img src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam" width="600"
+                    height="400">
+            </div>
+            <div class="forest-image" onclick="yo()">
+                <img src="static/forest.jpeg" alt="On the way to Duchess Falls, Pachmarhi" width="600" height="400">
+            </div>
+            <div class="airport-image">
+                <img src="static/birb.jpeg" alt="Painted Stork, Keoladeo National Park, Bharatpur" width="600"
+                    height="400">
+            </div>
+            <div class="haneri-image">
+                <img src="static/kanheri.jpeg" alt="Kanheri Caves, Mumbai" width="600"
+                    height="400">
+            </div>
         </div>
-        <p></p>
+
     </div>
-    <div class="airport-image">
-        <img src="static/birb.jpeg" alt="Painted Stork, Keoladeo National Park, Bharatpur" width="600" height="400">
-    </div>
+
     <p></p>
     </div>
     </div>
@@ -48,10 +58,25 @@
     .buffer-header-phga {
         height: 60px;
     }
+
+    .gallery>.thumbs {
+        height: 100px;
+        display: flex;
+    }
+
+    .gallery>.thumbs>div>img {
+        width: 150;
+        height: 100px;
+    }
 </style>
 
 <script>
     console.log("hello world!");
+
+    function yo() {
+        console.log(this);
+        console.log("yo!")
+    }
 </script>
 
 </html>
