@@ -14,7 +14,6 @@
             <img src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam" width="600"
                 height="400">
         </div>
-        <p></p>
         <div class="thumbs">
             <div class="current-focus" class="rhino-image">
                 <img src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam">
@@ -29,13 +28,6 @@
                 <img src="static/kanheri.jpeg" alt="Kanheri Caves, Mumbai">
             </div>
         </div>
-
-    </div>
-
-    <p></p>
-    </div>
-    </div>
-
     </div>
 
 </body>
@@ -68,20 +60,13 @@
 </style>
 
 <script>
-    console.log("hello world!");
-
     var thumbsDiv = document.querySelector('.thumbs');
-    console.log(thumbsDiv);
-
     var thumbImages = thumbsDiv.children;
-    console.log(thumbImages);
     for (var i = 0; i < thumbImages.length; i++) {
         var thumbImageDiv = thumbImages.item(i);
-        console.log('thumb image', thumbImageDiv);
-
         thumbImageDiv.onclick = function () {
             thumbImage = event.target;
-            
+
             var focusDiv = document.querySelector('.current-focus');
             var focusImage = focusDiv.children.item(0);
 
