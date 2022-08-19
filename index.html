@@ -1,91 +1,94 @@
 <html>
 
 <head>
-    <title>Pranav Anurag</title>
-    <meta charset="utf-8">
+	<title>Pranav Anurag</title>
+	<meta charset="utf-8">
 </head>
 
 <body>
-    <br>
-    <h1>Pranav Anurag</h1>
-    <div class="buffer1"></div>
+	<br>
+	<h1>Pranav Anurag</h1>
+	<div class="buffer1"></div>
 
-    <div class="gallery">
-        <div class="current-focus" class="rhino-image">
-            <img src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam" width="600"
-                height="400">
-        </div>
-				<div class="buffer2"></div>
-        <div class="thumbs">
-            <div class="current-focus" class="rhino-image">
-                <img src="static/rhino_thumb.jpeg" data-full-size-src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam">
-            </div>
-            <div class="forest-image">
-                <img src="static/forest_thumb.jpeg" data-full-size-src="static/forest.jpeg" alt="On the way to Duchess Falls, Pachmarhi">
-            </div>
-            <div class="airport-image">
-                <img src="static/birb_thumb.jpeg" data-full-size-src="static/birb.jpeg" alt="Painted Stork, Keoladeo National Park, Bharatpur">
-            </div>
-            <div class="kanheri-image">
-                <img src="static/kanheri_thumb.jpeg" data-full-size-src="static/kanheri.jpeg" alt="Kanheri Caves, Mumbai">
-            </div>
-        </div>
-    </div>
+	<div class="gallery">
+		<div class="current-focus" class="rhino-image">
+			<img src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam" width="600"
+				height="400">
+		</div>
+		<div class="buffer2"></div>
+		<div class="thumbs">
+			<div class="current-focus" class="rhino-image">
+				<img src="static/rhino_thumb.jpeg" data-full-size-src="static/rhino.jpeg"
+					alt="The Great Indian Rhino at Kaziranga National Park, Assam">
+			</div>
+			<div class="forest-image">
+				<img src="static/forest_thumb.jpeg" data-full-size-src="static/forest.jpeg"
+					alt="On the way to Duchess Falls, Pachmarhi">
+			</div>
+			<div class="airport-image">
+				<img src="static/birb_thumb.jpeg" data-full-size-src="static/birb.jpeg"
+					alt="Painted Stork, Keoladeo National Park, Bharatpur">
+			</div>
+			<div class="kanheri-image">
+				<img src="static/kanheri_thumb.jpeg" data-full-size-src="static/kanheri.jpeg" alt="Kanheri Caves, Mumbai">
+			</div>
+		</div>
+	</div>
 
 </body>
 
 <style>
-    h1 {
-        text-align: center;
-    }
+	h1 {
+		text-align: center;
+	}
 
-    body {
-        width: 600px;
-        height: 1400px;
-        margin: 0 auto;
-        justify-content: center;
-    }
+	body {
+		width: 600px;
+		height: 1400px;
+		margin: 0 auto;
+		justify-content: center;
+	}
 
-    .buffer1 {
-        height: 60px;
-    }
+	.buffer1 {
+		height: 60px;
+	}
 
-		.buffer2 {
-        height: 20px;
-    }
+	.buffer2 {
+		height: 20px;
+	}
 
-    .gallery>.thumbs {
-        height: 100px;
-        display: flex;
-    }
+	.gallery>.thumbs {
+		height: 100px;
+		display: flex;
+	}
 
-    .gallery>.thumbs>div>img {
-        width: 150;
-        height: 100px;
-    }
+	.gallery>.thumbs>div>img {
+		width: 150;
+		height: 100px;
+	}
 </style>
 
 <script>
-    var thumbsDiv = document.querySelector('.thumbs');
-    var thumbImages = thumbsDiv.children;
-    for (var i = 0; i < thumbImages.length; i++) {
-        var thumbImageDiv = thumbImages.item(i);
-        thumbImageDiv.onclick = function () {
-            thumbImage = event.target;
+	var thumbsDiv = document.querySelector('.thumbs');
+	var thumbImages = thumbsDiv.children;
+	for (var i = 0; i < thumbImages.length; i++) {
+		var thumbImageDiv = thumbImages.item(i);
+		thumbImageDiv.onclick = function () {
+			thumbImage = event.target;
 
-            var focusDiv = document.querySelector('.current-focus');
-            var focusImage = focusDiv.children.item(0);
+			var focusDiv = document.querySelector('.current-focus');
+			var focusImage = focusDiv.children.item(0);
 
-            focusImage.setAttribute('src', thumbImage.getAttribute('data-full-size-src'));
-            focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
+			focusImage.setAttribute('src', thumbImage.getAttribute('data-full-size-src'));
+			focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
 
-            focusDiv.classList.forEach((x, i) => {
-                if (x === "current-focus") return;
-                focusDiv.classList.remove(x);
-            })
+			focusDiv.classList.forEach((x, i) => {
+				if (x === "current-focus") return;
+				focusDiv.classList.remove(x);
+			})
 
-        }
-    }
+		}
+	}
 
 </script>
 
