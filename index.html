@@ -18,16 +18,16 @@
 				<div class="buffer2"></div>
         <div class="thumbs">
             <div class="current-focus" class="rhino-image">
-                <img src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam">
+                <img src="static/rhino_thumb.jpeg" data-full-size-src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam">
             </div>
             <div class="forest-image">
-                <img src="static/forest.jpeg" alt="On the way to Duchess Falls, Pachmarhi">
+                <img src="static/forest_thumb.jpeg" data-full-size-src="static/forest.jpeg" alt="On the way to Duchess Falls, Pachmarhi">
             </div>
             <div class="airport-image">
-                <img src="static/birb.jpeg" alt="Painted Stork, Keoladeo National Park, Bharatpur">
+                <img src="static/birb_thumb.jpeg" data-full-size-src="static/birb.jpeg" alt="Painted Stork, Keoladeo National Park, Bharatpur">
             </div>
             <div class="kanheri-image">
-                <img src="static/kanheri.jpeg" alt="Kanheri Caves, Mumbai">
+                <img src="static/kanheri_thumb.jpeg" data-full-size-src="static/kanheri.jpeg" alt="Kanheri Caves, Mumbai">
             </div>
         </div>
     </div>
@@ -76,7 +76,7 @@
             var focusDiv = document.querySelector('.current-focus');
             var focusImage = focusDiv.children.item(0);
 
-            focusImage.setAttribute('src', thumbImage.getAttribute('src'));
+            focusImage.setAttribute('src', thumbImage.getAttribute('data-full-size-src'));
             focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
 
             focusDiv.classList.forEach((x, i) => {
