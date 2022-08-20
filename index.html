@@ -79,8 +79,9 @@
 			var focusDiv = document.querySelector('.current-focus');
 			var focusImage = focusDiv.children.item(0);
 
-			focusImage.setAttribute('src', thumbImage.getAttribute('data-full-size-src'));
 			focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
+			focusImage.setAttribute('src', '');
+			focusImage.setAttribute('src', thumbImage.getAttribute('data-full-size-src'));
 
 			focusDiv.classList.forEach((x, i) => {
 				if (x === "current-focus") return;
