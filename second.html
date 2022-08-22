@@ -1,0 +1,58 @@
+<html>
+
+<head>
+	<title>Pranav Anurag</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<br>
+	<h1>Pranav Anurag</h1>
+    <div class="buffer1"></div>
+    <a href="index.html">1</a>
+	<a href="second.html">2</a>
+	<div class="buffer1"></div>
+    <div class="game"></div>
+
+</body>
+
+<style>
+	h1 {
+		text-align: center;
+	}
+
+	body {
+		width: 600px;
+		height: 1400px;
+		margin: 0 auto;
+		justify-content: center;
+	}
+
+	.buffer1 {
+		height: 60px;
+	}
+</style>
+
+<script>
+    let side = 600;
+    var grid = document.createElement("div");
+    grid.classList.add("grid")
+    grid.style.width = side;
+    grid.style.height = side;
+    grid.style.background = "black";
+    grid.style.color = "white";
+
+    
+    document.getElementsByClassName("game")[0].appendChild(grid);
+
+    var boxDiv = document.createElement("div");
+    boxDiv.style.width=side/10;
+    boxDiv.style.height=side/10;
+    boxDiv.style.background = "white";
+
+    alert('adding boxDiv!');
+
+    document.getElementsByClass("grid")[0].appendChild(boxDiv)
+</script>
+
+</html
