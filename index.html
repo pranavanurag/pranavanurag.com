@@ -9,47 +9,14 @@
 	<br>
 	<h1>Pranav Anurag</h1>
 	<div class="buffer1"></div>
-`
+	`
 	<div class="gallery">
 		<div class="current-focus" class="rhino-image">
 			<img src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam" width="600"
 				height="400">
 		</div>
 		<div class="buffer2"></div>
-		<div class="thumbs">
-			<div class="current-focus" class="rhino-image">
-				<img src="static/rhino_thumb.jpeg" data-full-size-src="static/rhino.jpeg"
-					alt="The Great Indian Rhino at Kaziranga National Park, Assam">
-			</div>
-			<div class="forest-image">
-				<img src="static/forest_thumb.jpeg" data-full-size-src="static/forest.jpeg"
-					alt="On the way to Duchess Falls, Pachmarhi">
-			</div>
-			<div class="airport-image">
-				<img src="static/birb_thumb.jpeg" data-full-size-src="static/birb.jpeg"
-					alt="Painted Stork, Keoladeo National Park, Bharatpur">
-			</div>
-			<div class="kanheri-image">
-				<img src="static/kanheri_thumb.jpeg" data-full-size-src="static/kanheri.jpeg"
-					alt="Kanheri Caves, Mumbai">
-			</div>
-			<div class="canyon-image">
-				<img src="static/canyon_thumb.jpeg" data-full-size-src="static/canyon.jpeg"
-					alt="Grand Canyon, Arizona, USA">
-			</div>
-			<div class="sanchi-image">
-				<img src="static/sanchi_thumb.jpeg" data-full-size-src="static/sanchi.jpeg"
-					alt="Buddha statue at Sanchi, Madhya Pradesh">
-			</div>
-			<div class="antcanyon-image">
-				<img src="static/antcanyon_thumb.jpeg" data-full-size-src="static/antcanyon.jpeg"
-					alt="Antelope Canyon, Arizona, USA">
-			</div>
-			<div class="guwahati-image">
-				<img src="static/guwahati_thumb.jpeg" data-full-size-src="static/guwahati.jpeg"
-					alt="Autos, and inside them - Guwahati, Assam">
-			</div>
-		</div>
+		<div class="thumbs"></div>
 	</div>
 
 </body>
@@ -86,6 +53,63 @@
 </style>
 
 <script>
+	let captions = {
+		"rhino": "The Great Indian Rhino at Kaziranga National Park, Assam",
+		"forest": "On the way to Duchess Falls, Pachmarhi",
+		"birb": "Painted Stork, Keoladeo National Park, Bharatpur",
+		"kanheri": "Kanheri Caves, Mumbai",
+		"canyon": "Grand Canyon, Arizona, USA",
+		"sanchi": "Buddha statue at Sanchi, Madhya Pradesh",
+		"antcanyon": "Antelope Canyon, Arizona, USA",
+		"guwahati": "Autos, and inside them - Guwahati, Assam"
+	}
+
+	function getImageThumbnail(imagePost) {
+		var imageThumbnail = document.createElement('img');
+		imageThumbnail.setAttribute("src", imagePost.thumb_src);
+		imageThumbnail.setAttribute("data-full-size-src", imagePost.full_src);
+		imageThumbnail.setAttribute("alt", imagePost.caption);
+		imageThumbnail.setAttribute("width", 150);
+		imageThumbnail.setAttribute("height", 100);
+
+		let className = "thumb-img-" + imagePost.id;
+		imageThumbnail.classList.add(className);
+
+		// console.log(imageThumbnail);
+		return imageThumbnail;
+	}
+
+	function getTextPostThumbnail(textPost) {
+		var textPost = document.createElement('p');
+		textPost.innerHTML = "hello world!";
+		return textPost;
+	}
+
+	function renderThumbnails(posts) {
+		var thumbsDiv = document.querySelector('.thumbs');
+
+		posts.forEach((post) => {
+			// all posts are images for now
+			thumbsDiv.appendChild(getImageThumbnail(post));
+		});
+	}
+
+	var imagePostIds = ["rhino", "guwahati", "forest", "birb", "kanheri", "canyon", "sanchi", "antcanyon"];
+	var imagePosts = [];
+	for (var i = 0; i < imagePostIds.length; i++) {
+		postId = imagePostIds[i];
+		var image = {};
+		image['thumb_src'] = "static/" + postId + "_thumb.jpeg";
+		image['full_src'] = "static/" + postId + ".jpeg";
+		image['caption'] = captions[postId];
+		// console.log('created new image post object from image id = ', postId, 'image = ', post);
+		imagePosts.push(image);
+	}
+
+	renderThumbnails(imagePosts);
+
+	
+
 	var thumbsDiv = document.querySelector('.thumbs');
 	var thumbImages = thumbsDiv.children;
 	for (var i = 0; i < thumbImages.length; i++) {
@@ -96,6 +120,8 @@
 			var focusDiv = document.querySelector('.current-focus');
 			var focusImage = focusDiv.children.item(0);
 
+			focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
+			focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
 			focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
 			focusImage.setAttribute('src', '');
 			focusImage.setAttribute('src', thumbImage.getAttribute('data-full-size-src'));
