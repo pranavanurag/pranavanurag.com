@@ -10,10 +10,7 @@
 	<h1>Pranav Anurag</h1>
 	<div class="buffer1"></div>
 	<div class="gallery">
-		<div class="current-focus" class="rhino-image">
-			<img src="static/rhino.jpeg" alt="The Great Indian Rhino at Kaziranga National Park, Assam" width="600"
-				height="400">
-		</div>
+		<div class="current-focus"></div>
 		<div class="buffer2"></div>
 		<div class="thumbs"></div>
 	</div>
@@ -73,19 +70,26 @@
 		"guwahati": "Autos, and inside them - Guwahati, Assam"
 	}
 
-	function getImageThumbnail(imagePost) {
-		var imageThumbnail = document.createElement('img');
-		imageThumbnail.setAttribute("src", imagePost.thumb_src);
-		imageThumbnail.setAttribute("data-full-size-src", imagePost.full_src);
-		imageThumbnail.setAttribute("alt", imagePost.caption);
-		imageThumbnail.setAttribute("width", 150);
-		imageThumbnail.setAttribute("height", 100);
+	function getImage(imagePost, width, height) {
+		var image = document.createElement('img');
+		image.setAttribute("src", imagePost.thumb_src);
+		image.setAttribute("data-full-size-src", imagePost.full_src);
+		image.setAttribute("alt", imagePost.caption);
+		image.setAttribute("width", width);
+		image.setAttribute("height", height);
 
 		let className = "thumb-img-" + imagePost.id;
-		imageThumbnail.classList.add(className);
+		image.classList.add(className);
 
-		// console.log(imageThumbnail);
-		return imageThumbnail;
+		return image;
+	}
+
+	function getImageLarge(imagePost) {
+		return getImage(imagePost, 600, 400);
+	}
+
+	function getImageThumbnail(imagePost) {
+		return getImage(imagePost, 150, 100);
 	}
 
 	function getTextPostThumbnail(textPost) {
@@ -103,6 +107,12 @@
 		});
 	}
 
+	function renderFocus(post) {
+		var currentFocusDiv = document.querySelector('.current-focus');
+		// all posts are images for now
+		currentFocusDiv.appendChild(getImageLarge(post));
+	}
+
 	var imagePostIds = ["rhino", "guwahati", "forest", "birb", "kanheri", "canyon", "sanchi", "antcanyon"];
 	var imagePosts = [];
 	for (var i = 0; i < imagePostIds.length; i++) {
@@ -114,9 +124,9 @@
 		// console.log('created new image post object from image id = ', postId, 'image = ', post);
 		imagePosts.push(image);
 	}
-
-	
-	renderThumbnails(shuffle(imagePosts));
+	imagePosts = shuffle(imagePosts);
+	renderFocus(imagePosts[0]);
+	renderThumbnails(imagePosts);
 
 	var thumbsDiv = document.querySelector('.thumbs');
 	var thumbImages = thumbsDiv.children;
