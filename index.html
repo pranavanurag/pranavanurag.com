@@ -53,6 +53,16 @@
 </style>
 
 <script>
+	function shuffle(array) {
+		let currentIndex = array.length, randomIndex;
+		while (currentIndex != 0) {
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex--;
+			[array[currentIndex], array[randomIndex]] = [
+				array[randomIndex], array[currentIndex]];
+		}
+		return array;
+	}
 	let captions = {
 		"rhino": "The Great Indian Rhino at Kaziranga National Park, Assam",
 		"forest": "On the way to Duchess Falls, Pachmarhi",
@@ -106,9 +116,8 @@
 		imagePosts.push(image);
 	}
 
-	renderThumbnails(imagePosts);
-
 	
+	renderThumbnails(shuffle(imagePosts));
 
 	var thumbsDiv = document.querySelector('.thumbs');
 	var thumbImages = thumbsDiv.children;
