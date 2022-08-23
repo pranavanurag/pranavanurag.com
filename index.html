@@ -85,7 +85,10 @@
 	}
 
 	function getImageLarge(imagePost) {
-		return getImage(imagePost, 600, 400);
+		var image = getImage(imagePost, 600, 400);
+		// todo clean this shit
+		image.setAttribute("src", image.getAttribute("data-full-size-src"));
+		return image;
 	}
 
 	function getImageThumbnail(imagePost) {
