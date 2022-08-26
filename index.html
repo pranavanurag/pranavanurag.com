@@ -123,8 +123,8 @@
 	for (var i = 0; i < imagePostIds.length; i++) {
 		postId = imagePostIds[i];
 		var image = {};
-		image['thumb_src'] = "static/" + postId + "_thumb.jpeg";
-		image['full_src'] = "static/" + postId + ".jpeg";
+		image['thumb_src'] = "photos/" + postId + "_thumb.jpeg";
+		image['full_src'] = "photos/" + postId + ".jpeg";
 		image['caption'] = captions[postId];
 		// console.log('created new image post object from image id = ', postId, 'image = ', post);
 		imagePosts.push(image);
