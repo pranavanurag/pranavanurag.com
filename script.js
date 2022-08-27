@@ -17,7 +17,11 @@ let captions = {
 	"canyon": "Grand Canyon, Arizona, USA",
 	"sanchi": "Buddha statue at Sanchi, Madhya Pradesh",
 	"antcanyon": "Antelope Canyon, Arizona, USA",
-	"guwahati": "Autos, and inside them - Guwahati, Assam"
+	"guwahati": "Autos, and inside them - Guwahati, Assam",
+	"beach": "Long exposure at Versova Beach, Mumbai",
+	"oregon": "Papa and Didi at Didi's apartment in Hillsboro, Oregon, USA",
+	"triveni": "Triveni Sangam, Allahabad",
+	"tree": "Kalsubai, Maharashtra"
 }
 
 function getImage(imagePost, width, height) {
@@ -26,7 +30,7 @@ function getImage(imagePost, width, height) {
 	image.setAttribute("data-full-size-src", imagePost.full_src);
 	image.setAttribute("alt", imagePost.caption);
 	image.setAttribute("width", width);
-	image.setAttribute("height", height);
+	// image.setAttribute("height", height);
 
 	let className = "thumb-img-" + imagePost.id;
 	image.classList.add(className);
@@ -35,14 +39,14 @@ function getImage(imagePost, width, height) {
 }
 
 function getImageLarge(imagePost) {
-	var image = getImage(imagePost, 600, 400);
+	var image = getImage(imagePost, 600);
 	// todo clean this shit
 	image.setAttribute("src", image.getAttribute("data-full-size-src"));
 	return image;
 }
 
 function getImageThumbnail(imagePost) {
-	return getImage(imagePost, 150, 100);
+	return getImage(imagePost, 149);
 }
 
 function getTextPostThumbnail(textPost) {
@@ -51,12 +55,18 @@ function getTextPostThumbnail(textPost) {
 	return textPost;
 }
 
+function wrapWithDiv(post) {
+	var wrapper = document.createElement('div');
+	wrapper.appendChild(post);
+	return wrapper;
+}
+
 function renderThumbnails(posts) {
 	var thumbsDiv = document.querySelector('.thumbs');
 
 	posts.forEach((post) => {
 		// all posts are images for now
-		thumbsDiv.appendChild(getImageThumbnail(post));
+		thumbsDiv.appendChild(wrapWithDiv(getImageThumbnail(post)));
 	});
 }
 
@@ -93,15 +103,13 @@ function attachEventListeners(event) {
 }
 
 
-
-var imagePostIds = ["rhino", "guwahati", "forest", "birb", "kanheri", "canyon", "sanchi", "antcanyon"];
 var imagePosts = [];
-for (var i = 0; i < imagePostIds.length; i++) {
-	postId = imagePostIds[i];
+for (const [postId, caption] of Object.entries(captions)) {
 	var image = {};
+	image['id'] = postId;
 	image['thumb_src'] = "photos/" + postId + "_thumb.jpeg";
 	image['full_src'] = "photos/" + postId + ".jpeg";
-	image['caption'] = captions[postId];
+	image['caption'] = caption;
 	// console.log('created new image post object from image id = ', postId, 'image = ', post);
 	imagePosts.push(image);
 }

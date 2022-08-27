@@ -20,9 +20,11 @@ body {
 .gallery>.thumbs {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: flex-start;
+	flex-direction: column;
+	height: 400;
 }
 
-.gallery>.thumbs>div>img {
-	width: 150;
-	height: 100px;
+.gallery>.thumbs>div {
+	margin: 1 1 0 0;
 }
