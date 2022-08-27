@@ -88,8 +88,6 @@ function attachEventListeners(event) {
 			var focusImage = focusDiv.children.item(0);
 
 			focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
-			focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
-			focusImage.setAttribute('alt', thumbImage.getAttribute('alt'));
 			focusImage.setAttribute('src', '');
 			focusImage.setAttribute('src', thumbImage.getAttribute('data-full-size-src'));
 
