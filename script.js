@@ -9,21 +9,6 @@ function shuffle(array) {
 	return array;
 }
 
-let captions = {
-	"rhino": "The Great Indian Rhino at Kaziranga National Park, Assam",
-	"forest": "On the way to Duchess Falls, Pachmarhi",
-	"birb": "Painted Stork, Keoladeo National Park, Bharatpur",
-	"kanheri": "Kanheri Caves, Mumbai",
-	"canyon": "Grand Canyon, Arizona, USA",
-	"sanchi": "Buddha statue at Sanchi, Madhya Pradesh",
-	"antcanyon": "Antelope Canyon, Arizona, USA",
-	"guwahati": "Autos, and inside them - Guwahati, Assam",
-	"beach": "Long exposure at Versova Beach, Mumbai",
-	"oregon": "Papa and Didi at Didi's apartment in Hillsboro, Oregon, USA",
-	"triveni": "Triveni Sangam, Allahabad",
-	"tree": "Kalsubai, Maharashtra"
-}
-
 function getImage(imagePost, width, height) {
 	var image = document.createElement('img');
 	image.setAttribute("src", imagePost.thumb_src);
@@ -100,23 +85,40 @@ function attachEventListeners(event) {
 	}
 }
 
-
-var imagePosts = [];
-for (const [postId, caption] of Object.entries(captions)) {
-	var image = {};
-	image['id'] = postId;
-	image['thumb_src'] = "photos/" + postId + "_thumb.jpeg";
-	image['full_src'] = "photos/" + postId + ".jpeg";
-	image['caption'] = caption;
-	// console.log('created new image post object from image id = ', postId, 'image = ', post);
-	imagePosts.push(image);
+function createImagesArr(captions) {
+	var imagePosts = [];
+	for (const [postId, caption] of Object.entries(captions)) {
+		var image = {};
+		image['id'] = postId;
+		image['thumb_src'] = "photos/" + postId + "_thumb.jpeg";
+		image['full_src'] = "photos/" + postId + ".jpeg";
+		image['caption'] = caption;
+		// console.log('created new image post object from image id = ', postId, 'image = ', post);
+		imagePosts.push(image);
+	}
+	return imagePosts;
 }
 
-imagePosts = shuffle(imagePosts);
-renderFocus(imagePosts[0]);
-renderThumbnails(imagePosts);
-attachEventListeners();
 
+async function main() {
+	const photosMeta = await fetchPhotosMetadata();
+	console.log(photosMeta);
+	imagePosts = createImagesArr(photosMeta)
+	console.log("main::invoked!")
+	imagePosts = shuffle(imagePosts);
+	renderFocus(imagePosts[0]);
+	renderThumbnails(imagePosts);
+	attachEventListeners();
+}
+
+
+async function fetchPhotosMetadata() {
+	return fetch("/photos_meta.json")
+		.then((response) => response.json())
+		.then((responseJson) => {return responseJson});
+}
+
+main();
 
 
 // gtag
