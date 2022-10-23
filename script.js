@@ -112,11 +112,25 @@ for (const [postId, caption] of Object.entries(captions)) {
 	imagePosts.push(image);
 }
 
-imagePosts = shuffle(imagePosts);
-renderFocus(imagePosts[0]);
-renderThumbnails(imagePosts);
-attachEventListeners();
 
+async function main() {
+	const photosMeta = await fetchPhotosMetadata();
+	console.log(photosMeta);
+	console.log("main::invoked!")
+	imagePosts = shuffle(imagePosts);
+	renderFocus(imagePosts[0]);
+	renderThumbnails(imagePosts);
+	attachEventListeners();
+}
+
+
+async function fetchPhotosMetadata() {
+    return fetch("/photos_meta.json")
+        .then((response) => response.json())
+        .then((responseJson) => {return responseJson});
+}
+
+main();
 
 
 // gtag
