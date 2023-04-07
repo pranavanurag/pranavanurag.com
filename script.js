@@ -15,7 +15,6 @@ function getImage(imagePost, width, height) {
 	image.setAttribute("data-full-size-src", imagePost.full_src);
 	image.setAttribute("alt", imagePost.caption);
 	image.setAttribute("width", width);
-	// image.setAttribute("height", height);
 
 	let className = "thumb-img-" + imagePost.id;
 	image.classList.add(className);
@@ -88,6 +87,21 @@ function createImagesArr(captions) {
 	return imagePosts;
 }
 
+function attachMasonryConfig() {
+	var gridElement = document.querySelector('.grid');
+	var masonryInstance = new Masonry(gridElement, {
+		fitWidth: true
+	});
+
+	var gridImages = gridElement.querySelectorAll('img');
+
+	Array.prototype.forEach.call(gridImages, function (image) {
+		var img = new Image();
+		img.src = image.src;
+
+		img.addEventListener('load', () => {masonryInstance.layout();});
+	});
+}
 
 async function main() {
 	console.log("main::invoked!")
@@ -97,17 +111,14 @@ async function main() {
 	renderFocus(imagePosts[0]);
 	renderThumbnails(imagePosts);
 	attachEventListeners();
-	$('.grid').masonry({
-		itemSelector: '.grid-item',
-		horizontalOrder: true
-	});
+	attachMasonryConfig();
 }
 
 
 async function fetchPhotosMetadata() {
 	return fetch("/photos_meta.json")
 		.then((response) => response.json())
-		.then((responseJson) => {return responseJson});
+		.then((responseJson) => { return responseJson });
 }
 
 main();
