@@ -15,7 +15,6 @@ function getImage(imagePost, width, height) {
 	image.setAttribute("data-full-size-src", imagePost.full_src);
 	image.setAttribute("alt", imagePost.caption);
 	image.setAttribute("width", width);
-	// image.setAttribute("height", height);
 
 	let className = "thumb-img-" + imagePost.id;
 	image.classList.add(className);
@@ -31,27 +30,16 @@ function getImageLarge(imagePost) {
 }
 
 function getImageThumbnail(imagePost) {
-	return getImage(imagePost, 149);
-}
-
-function getTextPostThumbnail(textPost) {
-	var textPost = document.createElement('p');
-	textPost.innerHTML = "hello world!";
-	return textPost;
-}
-
-function wrapWithDiv(post) {
-	var wrapper = document.createElement('div');
-	wrapper.appendChild(post);
-	return wrapper;
+	var thumbnail = getImage(imagePost, 149);
+	thumbnail.classList.add("grid-item");	// masonry layout css classes
+	return thumbnail;
 }
 
 function renderThumbnails(posts) {
 	var thumbsDiv = document.querySelector('.thumbs');
-
 	posts.forEach((post) => {
 		// all posts are images for now
-		thumbsDiv.appendChild(wrapWithDiv(getImageThumbnail(post)));
+		thumbsDiv.appendChild(getImageThumbnail(post));
 	});
 }
 
@@ -99,30 +87,38 @@ function createImagesArr(captions) {
 	return imagePosts;
 }
 
+function attachMasonryConfig() {
+	var gridElement = document.querySelector('.grid');
+	var masonryInstance = new Masonry(gridElement, {
+		fitWidth: true
+	});
+
+	var gridImages = gridElement.querySelectorAll('img');
+
+	Array.prototype.forEach.call(gridImages, function (image) {
+		var img = new Image();
+		img.src = image.src;
+
+		img.addEventListener('load', () => {masonryInstance.layout();});
+	});
+}
 
 async function main() {
-	const photosMeta = await fetchPhotosMetadata();
-	console.log(photosMeta);
-	imagePosts = createImagesArr(photosMeta)
 	console.log("main::invoked!")
+	const photosMeta = await fetchPhotosMetadata();
+	imagePosts = createImagesArr(photosMeta)
 	imagePosts = shuffle(imagePosts);
 	renderFocus(imagePosts[0]);
 	renderThumbnails(imagePosts);
 	attachEventListeners();
+	attachMasonryConfig();
 }
 
 
 async function fetchPhotosMetadata() {
 	return fetch("/photos_meta.json")
 		.then((response) => response.json())
-		.then((responseJson) => {return responseJson});
+		.then((responseJson) => { return responseJson });
 }
 
 main();
-
-
-// gtag
-window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-gtag('js', new Date());
-gtag('config', 'UA-238737936-1');

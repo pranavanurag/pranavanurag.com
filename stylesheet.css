@@ -21,14 +21,6 @@ body {
 	height: 20px;
 }
 
-.gallery>.thumbs {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	flex-direction: column;
-	height: 400;
-}
-
-.gallery>.thumbs>div {
+.grid-item {
 	margin: 1 1 0 0;
 }
