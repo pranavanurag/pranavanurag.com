@@ -101,10 +101,9 @@ function createImagesArr(captions) {
 
 
 async function main() {
-	const photosMeta = await fetchPhotosMetadata();
-	console.log(photosMeta);
-	imagePosts = createImagesArr(photosMeta)
 	console.log("main::invoked!")
+	const photosMeta = await fetchPhotosMetadata();
+	imagePosts = createImagesArr(photosMeta)
 	imagePosts = shuffle(imagePosts);
 	renderFocus(imagePosts[0]);
 	renderThumbnails(imagePosts);
