@@ -31,27 +31,16 @@ function getImageLarge(imagePost) {
 }
 
 function getImageThumbnail(imagePost) {
-	return getImage(imagePost, 149);
-}
-
-function getTextPostThumbnail(textPost) {
-	var textPost = document.createElement('p');
-	textPost.innerHTML = "hello world!";
-	return textPost;
-}
-
-function wrapWithDiv(post) {
-	var wrapper = document.createElement('div');
-	wrapper.appendChild(post);
-	return wrapper;
+	var thumbnail = getImage(imagePost, 149);
+	thumbnail.classList.add("grid-item");	// masonry layout css classes
+	return thumbnail;
 }
 
 function renderThumbnails(posts) {
 	var thumbsDiv = document.querySelector('.thumbs');
-
 	posts.forEach((post) => {
 		// all posts are images for now
-		thumbsDiv.appendChild(wrapWithDiv(getImageThumbnail(post)));
+		thumbsDiv.appendChild(getImageThumbnail(post));
 	});
 }
 
@@ -108,6 +97,10 @@ async function main() {
 	renderFocus(imagePosts[0]);
 	renderThumbnails(imagePosts);
 	attachEventListeners();
+	$('.grid').masonry({
+		itemSelector: '.grid-item',
+		horizontalOrder: true
+	});
 }
 
 
