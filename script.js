@@ -68,7 +68,7 @@ function attachEventListeners(event) {
 				if (x === "current-focus") return;
 				focusDiv.classList.remove(x);
 			})
-
+			document.body.scrollTop = document.documentElement.scrollTop = 0;
 		}
 	}
 }
