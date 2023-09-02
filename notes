@@ -1,0 +1,16 @@
+i want to create a service which
+    given an image, file name and descrpition
+    does the following
+        - renames the file to the desired name
+        - creates _thumb version of the photo
+        - updates photos_meta.json
+        - syncs these changes to the server
+
+
+there are a few subproblems to this
+- syncing anything to the server (be it an image file, the thumb, or the update photos_meta)
+- creating a thumbnail from the og pic
+
+
+i will try to do a few uploads today manually and note which steps can be automated easily
+
