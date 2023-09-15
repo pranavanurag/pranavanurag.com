@@ -1,30 +1,114 @@
 {
-	"rhino": "The Great Indian Rhino at Kaziranga National Park, Assam",
-	"forest": "On the way to Duchess Falls, Pachmarhi",
-	"birb": "Painted Stork, Keoladeo National Park, Bharatpur",
-	"kanheri": "Kanheri Caves, Mumbai",
-	"canyon": "Grand Canyon, Arizona, USA",
-	"sanchi": "Buddha statue at Sanchi, Madhya Pradesh",
-	"antcanyon": "Antelope Canyon, Arizona, USA",
-	"guwahati": "Autos, and inside them - Guwahati, Assam",
-	"beach": "Long exposure at Versova Beach, Mumbai",
-	"oregon": "Papa and Didi at Didi's apartment in Hillsboro, Oregon, USA",
-	"triveni": "Triveni Sangam, Allahabad",
-	"sunderbirb": "At Sunderban National Park, West Bengal",
-	"valparai": "Long exposure of a stream at Valparai, Tamil Nadu",
-	"landing": "Mumbai lights from an airplane",
-	"aerial": "Aerial view before landing in Mumbai, probably of Lonavala, Maharashtra",
-	"versova": "A sunset at Versova beach",
-	"viewfinder": "WIP: Self-reference",
-	"crossreference": "A cross reflected by a camera's live view on a monitor",
-	"westminster": "Sunset view of the Big Ben, Westminster Palace and Westminster Abbey from the London Eye",
-	"memorial_berlin": "Memorial to the Murdered Jews of Europe, Berlin",
-	"recursion": "The camera viewfinder becomes the subject",
-	"belur": "Entrance of the Chennakeshava Temple in Belur, Karnataka",
-	"berlinerdom": "Angels look over the gardens of the Berlin Cathedral",
-	"egyptianmelt": "Ruins of Ancient Greece at The British Museum, London",
-	"aphex": "Aphex Twin playing Victoria Park on 19th Aug 2023, a significant day for me",
-	"varaha": "Statue depicting Varaha, Indian Museum, Kolkata",
-	"afxcrew1": "End of Field Day festival in London, August 2023",
-	"afxcrew2": "End of Field Day festival in London, August 2023"
+    "rhino": {
+        "description": "The Great Indian Rhino at Kaziranga National Park, Assam",
+        "hidden": false
+    },
+    "forest": {
+        "description": "On the way to Duchess Falls, Pachmarhi",
+        "hidden": false
+    },
+    "birb": {
+        "description": "Painted Stork, Keoladeo National Park, Bharatpur",
+        "hidden": false
+    },
+    "kanheri": {
+        "description": "Kanheri Caves, Mumbai",
+        "hidden": false
+    },
+    "canyon": {
+        "description": "Grand Canyon, Arizona, USA",
+        "hidden": false
+    },
+    "sanchi": {
+        "description": "Buddha statue at Sanchi, Madhya Pradesh",
+        "hidden": false
+    },
+    "antcanyon": {
+        "description": "Antelope Canyon, Arizona, USA",
+        "hidden": false
+    },
+    "guwahati": {
+        "description": "Autos, and inside them - Guwahati, Assam",
+        "hidden": false
+    },
+    "beach": {
+        "description": "Long exposure at Versova Beach, Mumbai",
+        "hidden": false
+    },
+    "oregon": {
+        "description": "Papa and Didi at Didi's apartment in Hillsboro, Oregon, USA",
+        "hidden": false
+    },
+    "triveni": {
+        "description": "Triveni Sangam, Allahabad",
+        "hidden": false
+    },
+    "sunderbirb": {
+        "description": "At Sunderban National Park, West Bengal",
+        "hidden": false
+    },
+    "valparai": {
+        "description": "Long exposure of a stream at Valparai, Tamil Nadu",
+        "hidden": false
+    },
+    "landing": {
+        "description": "Mumbai lights from an airplane",
+        "hidden": false
+    },
+    "aerial": {
+        "description": "Aerial view before landing in Mumbai, probably of Lonavala, Maharashtra",
+        "hidden": false
+    },
+    "versova": {
+        "description": "A sunset at Versova beach",
+        "hidden": false
+    },
+    "viewfinder": {
+        "description": "WIP: Self-reference",
+        "hidden": false
+    },
+    "crossreference": {
+        "description": "A cross reflected by a camera's live view on a monitor",
+        "hidden": false
+    },
+    "westminster": {
+        "description": "Sunset view of the Big Ben, Westminster Palace and Westminster Abbey from the London Eye",
+        "hidden": false
+    },
+    "memorial_berlin": {
+        "description": "Memorial to the Murdered Jews of Europe, Berlin",
+        "hidden": false
+    },
+    "recursion": {
+        "description": "The camera viewfinder becomes the subject",
+        "hidden": false
+    },
+    "belur": {
+        "description": "Entrance of the Chennakeshava Temple in Belur, Karnataka",
+        "hidden": false
+    },
+    "berlinerdom": {
+        "description": "Angels look over the gardens of the Berlin Cathedral",
+        "hidden": false
+    },
+    "egyptianmelt": {
+        "description": "Ruins of Ancient Greece at The British Museum, London",
+        "hidden": false
+    },
+    "aphex": {
+        "description": "Aphex Twin playing Victoria Park on 19th Aug 2023, a significant day for me",
+        "hidden": false
+    },
+    "varaha": {
+        "description": "Statue depicting Varaha, Indian Museum, Kolkata",
+        "hidden": true
+    },
+    "afxcrew1": {
+        "description": "End of Field Day festival in London, August 2023",
+        "hidden": true
+    },
+    "afxcrew2": {
+        "description": "End of Field Day festival in London, August 2023",
+        "hidden": true
+    }
 }

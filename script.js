@@ -106,7 +106,17 @@ function attachMasonryConfig() {
 async function main() {
 	console.log("main::invoked!")
 	const photosMeta = await fetchPhotosMetadata();
-	imagePosts = createImagesArr(photosMeta)
+	captions = {}
+	for (const [postId, post] of Object.entries(photosMeta)) {
+		if (post.hidden === true) {
+			continue;
+		} else {
+			captions[postId] = post['description']
+		}
+	}
+
+	imagePosts = createImagesArr(captions)
+	
 	imagePosts = shuffle(imagePosts);
 	renderFocus(imagePosts[0]);
 	renderThumbnails(imagePosts);
